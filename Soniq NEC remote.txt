@@ -1,0 +1,8 @@
+MUTE: NEC 4EBB58A7 (32 bits)
+power on: NEC 4EBB708F (32 bits)
+volume up: NEC 4EBB926D (32 bits)
+volume down: NEC 4EBBC23D (32 bits)
+chan up: NEC 4EBB8A75 (32 bits)
+chan down: NEC 4EBBB24D (32 bits)
+source: NEC 4EBB7887 (32 bits)
+enter: NEC 4EBB3AC5 (32 bits)
