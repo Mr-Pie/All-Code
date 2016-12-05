@@ -1,0 +1,10 @@
+vol up: 0xE0E0E01F, 32
+vol down: 0xE0E0D02F, 32
+chan up: 0xE0E048B7, 32
+chan down: 0xE0E008F7, 32
+power on: 0xE0E040BF, 32
+source: 0xE0E0807F,32
+enter: 0xE0E016E9, 32
+right: 0xE0E046B9,32
+left: 0xE0E046B9, 32
+mute: 0xE0E0F00F, 32
