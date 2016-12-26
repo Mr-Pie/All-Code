@@ -1,0 +1,9 @@
+c:\users\nathan\documents\visual studio 2015\Projects\Windows_Http_requests\Windows_Http_requests\bin\Release\Windows_Http_requests.exe.config
+c:\users\nathan\documents\visual studio 2015\Projects\Windows_Http_requests\Windows_Http_requests\bin\Release\Windows_Http_requests.exe
+c:\users\nathan\documents\visual studio 2015\Projects\Windows_Http_requests\Windows_Http_requests\bin\Release\Windows_Http_requests.pdb
+c:\users\nathan\documents\visual studio 2015\Projects\Windows_Http_requests\Windows_Http_requests\obj\Release\Windows_Http_requests.csprojResolveAssemblyReference.cache
+c:\users\nathan\documents\visual studio 2015\Projects\Windows_Http_requests\Windows_Http_requests\obj\Release\Windows_Http_requests.Form1.resources
+c:\users\nathan\documents\visual studio 2015\Projects\Windows_Http_requests\Windows_Http_requests\obj\Release\Windows_Http_requests.Properties.Resources.resources
+c:\users\nathan\documents\visual studio 2015\Projects\Windows_Http_requests\Windows_Http_requests\obj\Release\Windows_Http_requests.csproj.GenerateResource.Cache
+c:\users\nathan\documents\visual studio 2015\Projects\Windows_Http_requests\Windows_Http_requests\obj\Release\Windows_Http_requests.exe
+c:\users\nathan\documents\visual studio 2015\Projects\Windows_Http_requests\Windows_Http_requests\obj\Release\Windows_Http_requests.pdb
