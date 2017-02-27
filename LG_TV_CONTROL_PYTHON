@@ -1,0 +1,50 @@
+#!/usr/bin/env python3
+ 
+import http.client
+import xml.etree.ElementTree as etree
+import sys
+lgtv = {}
+headers = {"Content-Type": "application/atom+xml"}
+# Replace 111111 in the next line with the key displayed in the tv screen.
+lgtv["pairingKey"] = "187781"
+# Replace with the ip adress of your LG tv.
+lgtv["ipaddress"] = "192.168.0.13"
+ 
+def displayKey():
+    conn = http.client.HTTPConnection( lgtv["ipaddress"], port=8080)
+    reqKey = "<?xml version=\"1.0\" encoding=\"utf-8\"?><auth><type>AuthKeyReq</type></auth>"
+    conn.request("POST", "/roap/api/auth", reqKey, headers=headers)
+    httpResponse = conn.getresponse()
+    if httpResponse.reason != "OK" : sys.exit("Network error")
+    return httpResponse.reason
+ 
+def getSessionid():
+    conn = http.client.HTTPConnection( lgtv["ipaddress"], port=8080)
+    pairCmd = "<?xml version=\"1.0\" encoding=\"utf-8\"?><auth><type>AuthReq</type><value>" \
+            + lgtv["pairingKey"] + "</value></auth>"
+    conn.request("POST", "/roap/api/auth", pairCmd, headers=headers)
+    httpResponse = conn.getresponse()
+    if httpResponse.reason != "OK" : return httpResponse.reason
+    tree = etree.XML(httpResponse.read())
+    return tree.find('session').text
+ 
+def handleCommand(cmdcode):
+    conn = http.client.HTTPConnection( lgtv["ipaddress"], port=8080)
+    cmdText = "<?xml version=\"1.0\" encoding=\"utf-8\"?><command>" \
+                + "<name>HandleKeyInput</name><value>" \
+                + cmdcode \
+                + "</value></command>"
+    conn.request("POST", "/roap/api/command", cmdText, headers=headers)
+    httpResponse = conn.getresponse()
+ 
+#main()
+ 
+theSessionid = getSessionid()
+ 
+if len(theSessionid) < 8 : sys.exit("Could not get Session Id: " + theSessionid)
+ 
+lgtv["session"] = theSessionid
+ 
+result = str(sys.argv[1])
+ 
+handleCommand(result)
