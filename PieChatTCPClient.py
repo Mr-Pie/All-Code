@@ -16,6 +16,9 @@ s.connect((TCP_IP, TCP_PORT))
 print('Initialising')
 
 top = tkinter.Tk()
+Text = tkinter.Text(top, height = 10, width = 30)
+Text.grid(column = 1, row = 1)
+
 # Code to add widgets will go here...
 
 def Listener():
@@ -38,9 +41,8 @@ MagicButton()
 TCPListen = threading.Thread(target = Listener)
 TCPListen.start()
 
-Text = tkinter.Text(top, height = 10, width = 30)
+
 BtnTest = tkinter.Button(top, text ="Button1Off", command = MagicButton)
-Text.grid(column = 1, row = 1)
 BtnTest.grid(column = 1,row = 4, columnspan = 2, rowspan = 2)
 top.mainloop()
 
