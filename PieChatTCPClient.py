@@ -6,7 +6,7 @@ from tkinter import *
 from time import sleep
 import threading
 
-TCP_IP = '192.168.0.11'
+TCP_IP = '192.168.0.88'
 #TCP_IP = '127.0.0.1'
 TCP_PORT = 29200
 BUFFER_SIZE = 4096
@@ -16,7 +16,7 @@ s.connect((TCP_IP, TCP_PORT))
 print('Initialising')
 
 top = tkinter.Tk()
-Text = tkinter.Text(top, height = 10, width = 30)
+Text = tkinter.Text(top, height = 10, width = 40)
 Text.grid(column = 1, row = 1)
 TextInput = tkinter.Entry(top, bd =1, width = 35)
 TextInput.grid(column = 1, row = 2)
@@ -27,19 +27,23 @@ def Listener():
     global s
     data = s.recv(BUFFER_SIZE)
     Text.insert(END,data)
-    #print(data)
+    Text.see("end")
+    print(data)
     print('repeating thread')
     Listener()
     
 def MagicButton():
-    #Text.insert(INSERT, "Hi Tomo\n")
-    print('Sending message')
-    LineFeed = '\n'
-    MESSSAGE = bytes(TextInput.get()+LineFeed, 'utf-8')
-    #MESSSAGE = b'HELLO\n'
-    global s
-    s.send(MESSSAGE)
-    TextInput.delete(0,END)
+    if len(TextInput.get()) != 0:   
+        #Text.insert(INSERT, "Hi Tomo\n")
+        print('Sending message')
+        LineFeed = '\n'
+        MESSSAGE = bytes(TextInput.get()+LineFeed, 'utf-8')
+        #MESSSAGE = b'HELLO\n'
+        global s
+        s.send(MESSSAGE)
+        Text.insert(END,MESSSAGE)
+        Text.see("end")
+        TextInput.delete(0,END)
 
 def PressedEnter(junk):
     print('Enter Pressed')
