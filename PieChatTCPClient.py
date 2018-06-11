@@ -29,8 +29,9 @@ def TCPConnect():
     except socket.error:
         #print("Cant open socket :(")
         TCPConnect()
-
-def MessageFb():
+    s.send(b'\n')
+   
+def MessageReceived():
     winsound.PlaySound('C:/Windows/Media/chimes.wav', winsound.SND_ASYNC)
 
 def Listener():
@@ -40,10 +41,10 @@ def Listener():
     Text.see("end")
     #print(data)
     #print('repeating thread')
-    MessageFb()
+    MessageReceived()
     Listener()
     
-def MagicButton():
+def EnterButton():
     if len(TextInput.get()) != 0:   
         #Text.insert(INSERT, "Hi Tomo\n")
         #print('Sending message')
@@ -58,17 +59,16 @@ def MagicButton():
 
 def PressedEnter(junk):
     #print('Enter Pressed')
-    MagicButton()
+    EnterButton()
 
 TCPConnect()
-MagicButton()
-
+EnterButton()
 
 TCPListen = threading.Thread(target = Listener)
 TCPListen.start()
 
 top.bind('<Return>', PressedEnter)
-BtnTest = tkinter.Button(top, text ="Send Message", command = MagicButton)
+BtnTest = tkinter.Button(top, text ="Send Message", command = EnterButton)
 BtnTest.grid(column = 1,row = 4, columnspan = 2, rowspan = 2)
 top.mainloop()
 
